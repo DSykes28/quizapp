@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
+
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
@@ -15,20 +17,11 @@
 
   <body>
     <header>
-      <!-- navigation bar -->
-      <nav>
-        <!-- website name -->
-        <div class="app-name">
-          <h5>Quizz App</h5>
-        </div>
-        <!-- login & register links -->
-        <div class="nav-links">
-          <a>Login</a>
-          <a>Register</a>
-        </div>
-      </nav>
+      <!-- adding navbar from _nav.ejs -->
+      <%- include('partials/_header') %>
+      <!-- adding image to the header -->
       <div class="header-image">
-        <img src="quizzapp.jpg" width = "740" height = "200"/>
+        <img src="/images/quizzapp.jpg" width = "740" height = "400"/>
       </div>
     </header>
   </body>
