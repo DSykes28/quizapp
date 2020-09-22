@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Login Page</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Carter+One&family=Josefin+Sans:ital,wght@0,300;0,700;1,300;1,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/login.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
+
+
+    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+    <!-- <script type="text/javascript" src="/scripts/app.js"></script> -->
+
+  </head>
+  <body>
+    <header>
+      <!-- adding navbar from _nav.ejs -->
+      <%- include('partials/_nav') %>
+    </header>
+    <main class="main-login">
+      <h3>Login</h3>
+      <form class="login-form">
+          <div class="form">
+            <input class="email" type="email" name="email" placeholder="Email" >
+            <input class="password" type="password" name="password" placeholder="Password">
+            <button type="submit" class="login-button">login!</button>
+          </div>
+      </form>
+    </main>
+  </body>
+</html>
+
+
