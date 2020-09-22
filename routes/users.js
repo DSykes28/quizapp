@@ -7,7 +7,7 @@
 
 const express = require('express');
 const app = express();
-const router  = app.Router();
+const router  = express.Router();
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
@@ -24,8 +24,6 @@ module.exports = (db) => {
   });
   return router;
 };
-
-const {} = require('../public/scripts/game');
 
 app.get("/",(req, res) => {
   const user = req.session.user_id;
@@ -80,4 +78,9 @@ app.post("/register", (req, res) => {
   }
   req.session.user_id = email;
   res.redirect("/quizzes_view");
+})
+
+app.post("/logout", (req, res) => {
+  req.session = null;
+  res.redirect("/urls");
 })
