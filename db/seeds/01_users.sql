@@ -109,3 +109,7 @@ INSERT INTO quizzes (title_id, question, choice_a, choice_b, choice_c, answer) V
 INSERT INTO results (user_id, quiz_id, score) VALUES (9, 4, 5);
 INSERT INTO results (user_id, quiz_id, score) VALUES (1, 11, 5);
 INSERT INTO results (user_id, quiz_id, score) VALUES (6, 10, 9);
+INSERT INTO results (user_id, quiz_id, score) VALUES (10, 2, 6);
+INSERT INTO results (user_id, quiz_id, score) VALUES (1, 1, 5);
+INSERT INTO results (user_id, quiz_id, score) VALUES (13, 10, 7);
+INSERT INTO results (user_id, quiz_id, score) VALUES (2, 3, 4);
