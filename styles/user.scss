@@ -1,0 +1,21 @@
+
+
+main{
+  height: 100%;
+  padding: 2rem;
+  margin-top: 4rem;
+  .row {
+    margin-bottom: 3rem;
+  }
+  .column {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+    padding-right: 1rem;
+    padding-left: 1rem;
+
+  }
+}
+

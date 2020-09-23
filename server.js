@@ -61,6 +61,10 @@ app.get("/register", (req, res) => {
 app.get("/new_quizz", (req, res) => {
   res.render("new_quizz");
 });
+// test user rout Affaf
+app.get("/user", (req, res) => {
+  res.render("user");
+});
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);

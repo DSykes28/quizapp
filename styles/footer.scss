@@ -1,6 +1,6 @@
 footer {
+  flex: none;
   padding: 0.10rem;
-  height: 50%;
   width: 100%;
   text-align:center;
   background-image: url(/images/quizzfooter.jpg);
@@ -9,4 +9,9 @@ footer {
   -moz-background-size: cover;
   background-size: cover;
   -o-background-size: cover;
+    margin-top: 2rem;
+    height: 10rem;
+    clear: both;
+    position: relative;
+
 }
