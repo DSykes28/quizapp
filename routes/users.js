@@ -8,6 +8,7 @@
 const express = require('express');
 const app = express();
 const router  = express.Router();
+const cookieSession = require('cookie-session');
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
