@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create a New Quiz</title>
+  <link href="https://fonts.googleapis.com/css2?family=Carter+One&family=Josefin+Sans:ital,wght@0,300;0,700;1,300;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/new-quizz.css" type="text/css" / >
+
+  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+  <script type="text/javascript" src="/scripts/app.js"></script>
+</head>
+<body>
+  <header>
+    <!-- adding navbar from _nav.ejs -->
+    <%- include('partials/_nav') %>
+  </header>
+  <main class="quizz">
+    <h3>Build your quiz</h3>
+    <form class="quizz-form">
+      <ul class="title-input">
+        <p>
+          Title
+        </p>
+        <input class="title" type="text" name="title" placeholder="quizz title" >
+      </ul>
+      <ul class="question-input">
+        <p>
+          Question:
+        </p>
+        <input class="question" type="text" name="question" placeholder="Write question">
+      </ul>
+      <ul class="answers">
+        <p>
+          Answers:
+        </p>
+        <ul>
+          <input class="choice-a" type="text" name="choice-a" placeholder="1st choice">
+          <input class="choice-b" type="text" name="choice-b" placeholder="2nd choice">
+          <input class="choice-c" type="text" name="choice-c" placeholder="3rd choice">
+          <input class="answer" type="text" name="answer" placeholder="The Answer">
+        </ul>
+      </ul>
+
+      <button type="submit" class="submit-button">Submit!</button>
+  </main>
+
+  <button class="button" type="submit">Add Question</button>
+  <button class="button" type="submit">Create Quiz</button>
+</form>
+<!-- some sort of add question functionality - how to repeat a new-question id output upon the push of a button? -->
+
+</body>
+</html>
