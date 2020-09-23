@@ -6,16 +6,19 @@
   background-color: white;
   padding: 40px;
   justify-content: space-evenly;
-  text-align: center
+  text-align: center;
+
 }
 .grid-item {
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: #0f7a8a;
   border: 1px solid rgba(0, 0, 0, 0.8);
   padding: 20px;
-  font-size: 30px;
-  text-align: center;
-  align-items: center;
-  background-image: url(/images/quizzapp.jpg);
+  font-size: 50px;
+  background-image: url(/images/quizz.jpg);
   background-position: center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
