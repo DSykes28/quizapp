@@ -1,0 +1,29 @@
+.quizz {
+  padding: 1rem;
+
+  .answers {
+
+    ul {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+      input {
+        margin-bottom: 15px;
+        // height: 50px;
+        // display: flex;
+        // justify-content: space-between;
+      }
+    }
+  }
+  .submit-button {
+    border: 1px solid #0f7a8a;
+    display: grid;
+    background-color: #0f7a8a;
+    color: #fff;
+    padding: 10px;
+
+    margin: auto;
+  }
+}
