@@ -1,6 +1,8 @@
 .grid-container {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
   display: grid;
-  grid-gap: 50px 100px;
+  grid-gap: 50px 70px;
   grid-template-rows: 200px 200px 200px ;
   grid-template-columns: 200px 200px 200px;
   background-color: white;
