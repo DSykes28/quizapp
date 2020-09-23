@@ -19,6 +19,7 @@ CREATE TABLE quiz_names (
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE NOT NULL,
   title VARCHAR(255) NOT NULL,
   private BOOLEAN NOT NULL DEFAULT FALSE,
+  total_score INTEGER,
   random_id uuid DEFAULT UUID_GENERATE_V4()
 
 );
@@ -37,6 +38,5 @@ CREATE TABLE results (
   id SERIAL PRIMARY KEY,
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE NOT NULL,
   quiz_id INTEGER REFERENCES quizzes(id) ON DELETE CASCADE NOT NULL,
-  score INTEGER,
-  total_score INTEGER
-);
+  score INTEGER
+  );

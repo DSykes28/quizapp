@@ -22,17 +22,17 @@ INSERT INTO users (name, email, password) VALUES ('Shang', 'chi@yahoo.com', 'pas
 INSERT INTO users (name, email, password) VALUES ('Luc', 'besson@gmail.com', 'password');
 
 
-INSERT INTO quiz_names (user_id, title, private) VALUES ('4', 'Aliens Movie Trivia', FALSE);
-INSERT INTO quiz_names (user_id, title, private) VALUES ('9', 'Country capitals!', FALSE);
-INSERT INTO quiz_names (user_id, title, private) VALUES ('17', '2020 Music', FALSE);
-INSERT INTO quiz_names (user_id, title, private) VALUES ('20', 'Foreign Film', FALSE);
-INSERT INTO quiz_names (user_id, title, private) VALUES ('7', 'Expanded Star Wars Trivia', FALSE);
-INSERT INTO quiz_names (user_id, title, private) VALUES ('7', 'Star Trek Trivia', FALSE);
-INSERT INTO quiz_names (user_id, title, private) VALUES ('1', 'Sci-Fi Authors', FALSE);
-INSERT INTO quiz_names (user_id, title, private) VALUES ('1', 'Fantasy Authors', TRUE);
-INSERT INTO quiz_names (user_id, title, private) VALUES ('13', 'State capitals', FALSE);
-INSERT INTO quiz_names (user_id, title, private) VALUES ('3', 'Golden Girl Quotes', FALSE);
-INSERT INTO quiz_names (user_id, title, private) VALUES ('16', 'How well do you know - The Big Lebowski?', FALSE);
+INSERT INTO quiz_names (user_id, title, private, total_score) VALUES ('4', 'Aliens Movie Trivia', FALSE, 5);
+INSERT INTO quiz_names (user_id, title, private, total_score) VALUES ('9', 'Country capitals!', FALSE, 8);
+INSERT INTO quiz_names (user_id, title, private, total_score) VALUES ('17', '2020 Music', FALSE, 8);
+INSERT INTO quiz_names (user_id, title, private, total_score) VALUES ('20', 'Foreign Film', FALSE, 5);
+INSERT INTO quiz_names (user_id, title, private, total_score) VALUES ('7', 'Expanded Star Wars Trivia', FALSE, 5);
+INSERT INTO quiz_names (user_id, title, private, total_score) VALUES ('7', 'Star Trek Trivia', FALSE, 6);
+INSERT INTO quiz_names (user_id, title, private, total_score) VALUES ('1', 'Sci-Fi Authors', FALSE, 5);
+INSERT INTO quiz_names (user_id, title, private, total_score) VALUES ('1', 'Fantasy Authors', TRUE, 5);
+INSERT INTO quiz_names (user_id, title, private, total_score) VALUES ('13', 'State capitals', FALSE, 5);
+INSERT INTO quiz_names (user_id, title, private, total_score) VALUES ('3', 'Golden Girl Quotes', FALSE, 10);
+INSERT INTO quiz_names (user_id, title, private, total_score) VALUES ('16', 'How well do you know - The Big Lebowski?', FALSE, 7);
 
 
 
@@ -106,6 +106,6 @@ INSERT INTO quizzes (title_id, question, choice_a, choice_b, choice_c, answer) V
 INSERT INTO quizzes (title_id, question, choice_a, choice_b, choice_c, answer) VALUES (11, 'What religion does Walter practice?', 'Catholocism', 'Southern Baptist', 'Islam', 'Judaism');
 INSERT INTO quizzes (title_id, question, choice_a, choice_b, choice_c, answer) VALUES (11, 'In what war did Jeffrey Lebowski (a.k.a. The Big Lebowski) lose the use of his legs?', 'World War II', 'World War I', 'Vietnam War', 'Korean War');
 
-INSERT INTO results (user_id, quiz_id, score, total_score) VALUES (9, 4, 5, 5);
-INSERT INTO results (user_id, quiz_id, score, total_score) VALUES (1, 11, 5, 7);
-INSERT INTO results (user_id, quiz_id, score, total_score) VALUES (6, 10, 9, 10);
+INSERT INTO results (user_id, quiz_id, score) VALUES (9, 4, 5);
+INSERT INTO results (user_id, quiz_id, score) VALUES (1, 11, 5);
+INSERT INTO results (user_id, quiz_id, score) VALUES (6, 10, 9);
