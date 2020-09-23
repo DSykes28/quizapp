@@ -1,6 +1,7 @@
 
 
 main{
+  color:  #0f7a8a;
   height: 100%;
   padding: 2rem;
   margin-top: 4rem;
@@ -15,6 +16,16 @@ main{
     margin-bottom: 3rem;
     padding-right: 1rem;
     padding-left: 1rem;
+
+  }
+  button {
+    border: 1px solid #0f7a8a;
+    display: grid;
+    background-color: #0f7a8a;
+    color: #fff;
+    padding: 7px;
+
+    margin: auto;
 
   }
 }
