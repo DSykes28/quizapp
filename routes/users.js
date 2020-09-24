@@ -23,51 +23,56 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   });
+
+  router.get("/",(req, res) => {
+    if (req.session) {
+      res.redirect("/index");
+    } else {
+      res.redirect("/login");
+    }
+  });
+
+  router.get("/quiz/new", (req, res) => {
+    if (req.session !== true) {
+      res.redirect("/login");
+    } else {
+      const user = req.session.user_id;
+      let templateVars = {
+        user: users[user],
+      };
+      res.render("new_quizz", templateVars);
+    }
+  })
+
+  router.post("quiz/new",(req, res) => {
+    const quiz = req.params.new_quiz;
+    const user = req.session.user_id
+    if (!user) {
+      res.send("Please log in to view.").redirect("/login");
+    }
+    //save quiz to database
+    res.render("quizzes_view");
+  });
+
+  router.get("/quiz/:quizID", (req, res) => {
+    res.render("quiz");
+  });
+
+  router.get("/user/:quizID", (req, res) => {
+    res.render("result");
+  });
+
   return router;
 };
 
-app.get("/",(req, res) => {
-  const user = req.session.user_id;
-  if (user) {
-    res.redirect("/index");
-  } else {
-    res.redirect("/login");
-  }
-});
 
 //form for user to make quiz
-app.route("/quiz/new")
-.get((req, res) => {
-  const user = req.session.user_id;
-  if (!user) {
-    res.redirect("/login");
-  } else {
-    let templateVars = {
-      user: users[user],
-    };
-    res.render("new_quiz", templateVars);
-  }
-})
-.post((req, res) => {
-  const quiz = req.params.new_quiz;
-  const user = req.session.user_id
-  if (!user) {
-    res.send("Please log in to view.").redirect("/login");
-  }
-  //save quiz to database
-  res.render("quizzes_view");
-});
+
 
 //quiz url - can be unlisted or public
-app.get("/quiz/:quizID", (req, res) => {
-  res.render("quiz");
-});
+;
 
 //page for user to view all of the quizzes they created
-
 //upon completion of quiz, shareable link to result of attempt
 //show all quizzes - public - you don’t need to login to view or take quiz, only to make 1
-app.get("/user/:quizID", (req, res) => {
-  res.render("result");
-});
 
