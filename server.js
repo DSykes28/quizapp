@@ -51,26 +51,31 @@ app.use("/", authRoutes(db));
 app.get("/", (req, res) => {
   res.render("index");
 });
-// test login rout Affaf
+// test login route Affaf
 app.get("/login", (req, res) => {
   res.render("login");
 });
-// test register rout Affaf
+// test register route Affaf
 app.get("/register", (req, res) => {
   res.render("register");
 });
-// test register rout Affaf
+// test register route Affaf
 app.get("/new_quizz", (req, res) => {
   res.render("new_quizz");
 });
-// test user rout Affaf
+// test user route Affaf
 app.get("/user", (req, res) => {
   res.render("user");
 });
 
-// test result rout Affaf
+// test result route Affaf
 app.get("/result", (req, res) => {
   res.render("result");
+});
+
+// test quizz route Affaf
+app.get("/quizz", (req, res) => {
+  res.render("quizz");
 });
 
 app.listen(PORT, () => {
