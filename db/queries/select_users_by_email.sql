@@ -1,2 +1,2 @@
-select name from users
+select name, password from users
 where email = 'lostin@wonderland.com';

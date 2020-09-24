@@ -35,11 +35,13 @@ app.use(express.static("public"));
 // Note: Feel free to replace the example routes below with your own
 const usersRoutes = require("./routes/users");
 const widgetsRoutes = require("./routes/widgets");
+const authRoutes = require("./routes/auth");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/api/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
+app.use("/", authRoutes(db));
 // Note: mount other resources here, using the same pattern above
 
 
@@ -48,6 +50,32 @@ app.use("/api/widgets", widgetsRoutes(db));
 // Separate them into separate routes files (see above).
 app.get("/", (req, res) => {
   res.render("index");
+});
+// test login route Affaf
+app.get("/login", (req, res) => {
+  res.render("login");
+});
+// test register route Affaf
+app.get("/register", (req, res) => {
+  res.render("register");
+});
+// test register route Affaf
+app.get("/new_quizz", (req, res) => {
+  res.render("new_quizz");
+});
+// test user route Affaf
+app.get("/user", (req, res) => {
+  res.render("user");
+});
+
+// test result route Affaf
+app.get("/result", (req, res) => {
+  res.render("result");
+});
+
+// test quizz route Affaf
+app.get("/quizz", (req, res) => {
+  res.render("quizz");
 });
 
 app.listen(PORT, () => {

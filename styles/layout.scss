@@ -1,9 +1,25 @@
 // See: https://sass-lang.com/
 
-body {
-  background-color: #EEE;
-
-  h1 {
-    color: #244751;
-  }
+html {
+  height: 100%;
+  width: 100%;
 }
+
+body {
+  height: 100%;
+  width: 100%;
+  font-family: 'Josefin Sans', sans-serif;
+  background-color: white;
+  font-size: 15px;
+  display:flex;
+  flex-direction:column;
+  color: #0f7a8a;
+  // // justify-content: space-between;
+
+}
+
+
+
+
+
+

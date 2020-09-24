@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Register Page</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Carter+One&family=Josefin+Sans:ital,wght@0,300;0,700;1,300;1,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/register.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/footer.css" type="text/css" />
+
+
+    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+    <!-- <script type="text/javascript" src="/scripts/app.js"></script> -->
+
+  </head>
+  <body>
+    <header>
+      <!-- adding navbar from _nav.ejs -->
+      <%- include('partials/_nav') %>
+    </header>
+    <main class="main-register">
+      <h3>Register</h3>
+      <form class="register-form">
+
+            <ul class="name-input">
+              <p>
+                Name:
+              </p>
+              <input class="name" type="text" name="name" placeholder="your name" >
+            </ul>
+            <ul class="email-input">
+              <p>
+                Email:
+              </p>
+              <input class="email" type="email" name="email" placeholder="your nemail">
+            </ul>
+            <ul class="password-input">
+              <p>
+                Password:
+              </p>
+              <input class="password" type="password" name="password" placeholder="Password">
+            </ul>
+            <button type="submit" class="register-button">Register!</button>
+
+      </form>
+    </main>
+  </body>
+  <%- include('partials/_footer') %>
+
+</html>
+
+

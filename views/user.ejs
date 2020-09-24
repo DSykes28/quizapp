@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>user profile</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Carter+One&family=Josefin+Sans:ital,wght@0,300;0,700;1,300;1,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/footer.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/user.css" type="text/css" />
+
+    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+    <script type="text/javascript" src="/scripts/app.js"></script>
+  </head>
+
+  <body>
+    <!-- adding navbar from _nav.ejs -->
+    <%- include('partials/_nav') %>
+    <header>
+    </header>
+    <main >
+      <div class="column" style="background-color:#faf02e">
+        <div class="info">
+          <h2>Quizz Title</h2>
+          <p>number of attempts: 3</p>
+        </div>
+        <div id="checkbox">
+          <input type="checkbox">
+          <label>private</label>
+        </div>
+      </div>
+      <div class="column" style="background-color:#faf02e">
+        <div class="info">
+          <h2>Quizz Title</h2>
+          <p>number of attempts: 10</p>
+        </div>
+        <div id="checkbox">
+          <input type="checkbox">
+          <label>private</label>
+        </div>
+      </div>
+    </main>
+
+  </body>
+  <%- include('partials/_footer') %>
+
+</html>
