@@ -13,6 +13,14 @@ module.exports = (db) => {
     if (req.session !== true) {
       res.render("login");
     } else {
+      db.query(`SELECT * FROM users;`)
+      .then(data => {
+        //  const users = data.rows;
+        //  res.json({ users });
+      })
+       .catch(err => {
+         res.status(500).json({ error: err.message });
+       });
       let user = req.session.user_id;
       let templateVars = {
         user: users[user],
@@ -26,15 +34,37 @@ module.exports = (db) => {
   });
 
   router.get("/register", (req, res) => {
+    // db.query(`SELECT * FROM users;`)
+    // .then(data => {
+    //   const users = data.rows;
+    //   res.json({ users });
+    // })
+    // .catch(err => {
+    //   res
+    //     .status(500)
+    //     .json({ error: err.message });
+    // });
     res.render("register")
   });
 
   router.post("/register", (req, res) => {
+//check db for user, if exists return error
     const email = req.body.email;
     const password = req.body.password;
     if (email === '' || password === '') {
+      // res.send(error);
 
-    } else {//queries
+    } else {
+      // db.query(`INSERT into users;`)
+      // .then(data => {
+      //   const users = data.rows;
+      //   res.json({ users });
+      // })
+      // .catch(err => {
+      //   res
+      //     .status(500)
+      //     .json({ error: err.message });
+      // })
       //register user in database. how?
     }
     // req.session.user_id = email;
@@ -43,46 +73,8 @@ module.exports = (db) => {
 
   router.post("/logout", (req, res) => {
     req.session = null;
-    res.redirect("/urls");
+    res.redirect("/");
   });
-
-//   app.route("/login")
-//   .get((req, res) => {
-//     if (req.session !== true) {
-//       res.render("login");
-//     } else {
-//       let user = req.session.user_id;
-//       let templateVars = {
-//         user: users[user],
-//       };
-//       res.render("quizzes_view");
-//     }})
-//   .post((req, res) => {
-//   //verify email using db query, then set cookie, then
-//   res.render("user_homepage");
-// });
-
-// app.route("/register")
-//   .get((req, res) => {
-//       res.render("register")
-//   })
-//   .post((req, res) => {
-//     const email = req.body.email;
-//     const password = req.body.password;
-//     if (email === '' || password === '') {
-
-//     } else if {//queries
-//       //register user in database. how?
-//     }
-//     req.session.user_id = email;
-//     res.redirect("/quizzes_view");
-//   });
-
-  // app.post("/logout", (req, res) => {
-  //   req.session = null;
-  //   res.redirect("/urls");
-  // });
-
 
   return router;
 };
