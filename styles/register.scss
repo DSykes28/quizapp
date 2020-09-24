@@ -1,20 +1,19 @@
 .main-register {
-  padding: 1rem;
-  display: flex;
-  align-items: flex-start;
+  padding: 3rem;
+  // display: flex;
+  // align-items: flex-start;
   flex-direction: column;
   height: 100%;
   width: 100%;
-  color: black;
+  color: #0f7a8a;
   margin: 1rem;
-  text-align: center;
-
+  font-weight: bold;
 
   h3 {
     width: 100%;
     padding: 1rem;
-    display: flex;
     text-align: center;
+    margin-bottom: unset;
 
   }
 
@@ -22,40 +21,33 @@
     width: 100%;
     padding: 1rem;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     flex-direction: column;
+    justify-content: space-between;
 
-    .name-input {
+
+    .form-ul {
       width: 100%;
       display: flex;
       align-items: flex-start;
       flex-direction: row;
       justify-content: space-around;
       padding: 1rem;
-    }
-
-    .email-input {
-      width: 100%;
-      display: flex;
-      align-items: flex-start;
-      flex-direction: row;
-      justify-content: space-around;
-      padding: 1rem;
-    }
-
-    .password-input {
-      width: 100%;
-      display: flex;
-      align-items: flex-start;
-      flex-direction: row;
-      justify-content: space-around;
-      padding: 1rem;
+      .form-control {
+        padding: 0.5rem;
+        text-align: center;
+        width: 50%;
+      }
     }
 
     .register-button {
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
+      border: 1px solid #0f7a8a;
+      display: grid;
+      background-color: #0f7a8a;
+      color: #fff;
+      padding: 10px;
+      margin-top: 2rem;
+
     }
   }
 }

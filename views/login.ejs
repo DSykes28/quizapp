@@ -24,17 +24,16 @@
     </header>
     <main class="main-login">
       <h3>Login</h3>
-      <form class="login-form">
+      <form class="login-form" action="/login" method="POST">
           <div class="form">
-            <input class="email" type="email" name="email" placeholder="Email" >
-            <input class="password" type="password" name="password" placeholder="Password">
+            <input class="form-control" type="email" name="email" placeholder="Email" >
+            <input class="from-control" type="password" name="password" placeholder="Password">
             <button type="submit" class="login-button">login!</button>
           </div>
       </form>
     </main>
   </body>
   <%- include('partials/_footer') %>
-
 </html>
 
 

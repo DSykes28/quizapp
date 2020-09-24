@@ -1,18 +1,19 @@
 
   <!-- navigation bar -->
   <nav>
-    <!-- website name -->
-    <!-- <div class="app-name">
-      <h5>Quizz App</h5>
-    </div> -->
-    <!-- login & register links -->
-    <!-- <diuv class="nav-links">
-      <a class="login">Login</a>
-      <a class="register">Register</a>
-    </div> -->
     <ul class="nav-bar">
       <li><a class="active" href="/">QUIZZAPP</a></li>
-      <li><a href="/login">Login</a></li>
-      <li><a href="/register">Register</a></li>
+      <!-- check if user is logged in or not to change nav bar links -->
+      <% if (true !== true) { %>
+        <li><a href="/login">Login</a></li>
+        <li><a href="/register">Register</a></li>
+      <% } else { %>
+        <li><a href="/user">username Profile</a></li>
+        <li><a href="/new_quizz">New Quizz</a></li>
+        <!-- button to logout -->
+        <li>
+          <button type = "submit" >logout</button>
+        </li>
+      <% } %>
     </ul>
   </nav>
