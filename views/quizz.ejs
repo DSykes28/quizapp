@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>create a new quizz</title>
+    <title>Quizz</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Carter+One&family=Josefin+Sans:ital,wght@0,300;0,700;1,300;1,700&display=swap" rel="stylesheet">
 
@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
     <link rel="stylesheet" href="/styles/new-quizz.css" type="text/css" />
     <link rel="stylesheet" href="/styles/footer.css" type="text/css" />
-
+    <link rel="stylesheet" href="/styles/quizz.css" type="text/css" />
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
@@ -26,38 +26,23 @@
     <%- include('partials/_nav') %>
     <header>
     </header>
-    <main class="quizz">
-      <h3>Build your quiz</h3>
-      <form class="quizz-form">
-        <ul class="title-input">
-          <p>
-            Title
-          </p>
-          <input class="title" type="text" name="title" placeholder="quizz title" >
-        </ul>
-        <ul class="question-input">
-          <p>
-            Question:
-          </p>
-          <input class="question" type="text" name="question" placeholder="Write question">
-        </ul>
-        <ul class="answers">
-          <p>
-            Answers:
-          </p>
-          <ul >
-            <input class="choice-a" type="text" name="choice-a" placeholder="1st choice">
-            <input class="choice-b" type="text" name="choice-b" placeholder="2nd choice">
-            <input class="choice-c" type="text" name="choice-c" placeholder="3rd choice">
-            <input class="answer" type="text" name="answer" placeholder="The Answer">
-          </ul>
-          <p>
-            add new question +
-          </p>
-        </ul>
-
+    <main class="main-quizz">
+      <h3>Good Luck!!</h3>
+      <div>
+        <form class="quizz-form">
+          <h2>Question</h2>
+          <div>
+            <label for="var_string"><input type="radio" name="variable" value="0" id="var_string" />Answer </label>
+            <label for="var_join"><input type="radio" name="variable" value="0" id="var_join" />answer</label>
+            <label for="var_info"><input type="radio" name="variable" value="25" id="var_info" />answer</label>
+            <label for="var_condition"><input type="radio" name="variable" value="0" id="var_condition"/>answer</label>
+          </div>
+        </form>
         <button type="submit" class="submit-button">Submit!</button>
-      </form>
+        <p>Your grade is: <span id="grade">__</span></p>
+        <p id="grade2"></p>
+      </div>
+
     </main>
   </body>
   <%- include('partials/_footer') %>
