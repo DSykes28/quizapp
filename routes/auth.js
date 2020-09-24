@@ -25,7 +25,7 @@ module.exports = (db) => {
       let templateVars = {
         user: users[user],
       };
-      res.render("quizzes_view");
+      res.render("index");
     }
   });
 
