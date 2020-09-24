@@ -42,12 +42,11 @@ module.exports = (db) => {
       };
       res.render("new_quizz", templateVars);
     }
-  })
+  });
 
   router.post("quiz/new",(req, res) => {
     const quiz = req.params.new_quiz;
-    const user = req.session.user_id
-    if (!user) {
+    if (req.session !== true) {
       res.send("Please log in to view.").redirect("/login");
     }
     //save quiz to database
