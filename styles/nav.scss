@@ -19,10 +19,22 @@
     a:hover {
       background-color: white;
     }
+
+    button {
+      margin-top: 0.17rem;
+      border: 1px solid #0f7a8a;
+      display: grid;
+      background-color: #0f7a8a;
+      color:  #fff529;
+      padding: 10px;
+
+    }
+    button:hover {
+      background-color: white;
+
+    }
   }
   .active {
     font-weight: bold;
-    // background-color: #4CAF50;
-
   }
 }
