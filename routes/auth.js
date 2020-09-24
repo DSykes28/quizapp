@@ -56,15 +56,15 @@ module.exports = (db) => {
 
     } else {
       // db.query(`INSERT into users;`)
-      .then(data => {
-        const users = data.rows;
-        res.json({ users });
-      })
-      .catch(err => {
-        res
-          .status(500)
-          .json({ error: err.message });
-      })
+      // .then(data => {
+      //   const users = data.rows;
+      //   res.json({ users });
+      // })
+      // .catch(err => {
+      //   res
+      //     .status(500)
+      //     .json({ error: err.message });
+      // })
       //register user in database. how?
     }
     // req.session.user_id = email;

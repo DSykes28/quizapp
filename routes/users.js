@@ -8,7 +8,8 @@
 const express = require('express');
 const app = express();
 const router  = express.Router();
-const cookieSession = require('cookie-session');
+const cookieSession = require('cookie-session')
+const getQuizzes = require('../public/scripts/helpers/get9Quizzes');
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
@@ -26,8 +27,7 @@ module.exports = (db) => {
 
   router.get("/",(req, res) => {
     if (req.session) {
-      res.redirect("/index");
-      //select 9 random quizzes to display through DB then show them in view
+      res.send(getQuizzes()).redirect("/index");
     } else {
       res.redirect("/login");
     }
@@ -51,8 +51,13 @@ module.exports = (db) => {
     if (req.session !== true) {
       res.send("Please log in to view.").redirect("/login");
     }
+    let templateVars = {
+      user: users[user],
+      quizzes: ________,
+      score: ________
+    }
     //save quiz to database
-    res.render("quizzes_view");
+    res.render("user", templateVars);
   });
 
   router.get("/quiz/:quizID", (req, res) => {
