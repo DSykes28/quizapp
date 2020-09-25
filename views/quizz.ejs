@@ -19,6 +19,7 @@
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
+    <script type="text/javascript" src="/scripts/submitAnswers.js"></script>
   </head>
 
   <body>
@@ -30,21 +31,29 @@
       <h3>Good Luck!!</h3>
       <div>
         <form class="quizz-form">
-          <h2>Question</h2>
-          <div>
-            <label for="var_string"><input type="radio" name="variable" value="0" id="var_string" />Answer </label>
-            <label for="var_join"><input type="radio" name="variable" value="0" id="var_join" />answer</label>
-            <label for="var_info"><input type="radio" name="variable" value="25" id="var_info" />answer</label>
-            <label for="var_condition"><input type="radio" name="variable" value="0" id="var_condition"/>answer</label>
-          </div>
-        </form>
-        <button type="submit" class="submit-button">Submit!</button>
-        <p>Your grade is: <span id="grade">__</span></p>
-        <p id="grade2"></p>
-      </div>
+          <% for (question of data) { %>
+            <h2><%= question.question %></h2>
+            <% let arr = [question.a, question.b, question.c, question.d].sort(()=> Math.random()-0.5) %>
+            <fieldset id="group<%= question.q_id %>" data-answer="<%= question.d %>">
+              <label for="var_string"><input type="radio" name="group<%= question.q_id %>" /><%= arr[0] %></label>
+              <label for="var_join"><input type="radio" name="group<%= question.q_id %>"  /><%= arr[1] %></label>
+              <label for="var_info"><input type="radio" name="group<%= question.q_id %>"/><%= arr[2] %></label>
+              <label for="var_condition"><input type="radio" name="group<%= question.q_id %>" /><%= arr[3] %></label>
+            </fieldset>
+         <% } %>
+         <button type="submit" onclick="myFunction()" class="submit-button">Submit!</button>
+          <script>
+          function myFunction() {
+            window.location.href("/quiz/:quizID");
+          }
+          </script>
 
+         <p>Your grade is: <span id="grade">__</span></p>
+         <button type="submit" class="share-button">Share your result!</button>
+         <p id="grade2"></p>
+
+        </form>
+      </div>
     </main>
   </body>
-  <%- include('partials/_footer') %>
-
 </html>

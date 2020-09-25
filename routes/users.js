@@ -8,7 +8,7 @@
 const express = require('express');
 const app = express();
 const router  = express.Router();
-const cookieSession = require('cookie-session')
+const cookieSession = require('cookie-session');
 const getQuizzes = require('../helpers/get9Quizzes');
 
 module.exports = (db) => {
