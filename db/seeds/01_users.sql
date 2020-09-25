@@ -56,7 +56,7 @@ INSERT INTO quizzes (title_id, question, choice_a, choice_b, choice_c, answer) V
 INSERT INTO quizzes (title_id, question, choice_a, choice_b, choice_c, answer) VALUES (3, 'Who sings Memories?', 'Justin Bieber', 'Harry Styles', 'Ed Sheeran', 'Maroon 5');
 INSERT INTO quizzes (title_id, question, choice_a, choice_b, choice_c, answer) VALUES (3, 'Who sings State of the Union?', 'Nas', 'Joyner Lucas', 'Lil Baby', 'Public Enemy');
 INSERT INTO quizzes (title_id, question, choice_a, choice_b, choice_c, answer) VALUES (3, 'Which song does not feature Drake?', 'Only You Freestyle', 'Popstar', 'Greece', 'Rockstar');
-INSERT INTO quizzes (title_id, question, choice_a, choice_b, choice_c, answer) VALUES (3, 'Which sone appeared on Bill and Ted Face the Music?', 'Hero', 'California Snow', 'The End of the Game', 'Beginning of the End');
+INSERT INTO quizzes (title_id, question, choice_a, choice_b, choice_c, answer) VALUES (3, 'Which song appeared on Bill and Ted Face the Music?', 'Hero', 'California Snow', 'The End of the Game', 'Beginning of the End');
 INSERT INTO quizzes (title_id, question, choice_a, choice_b, choice_c, answer) VALUES (4, 'Which Film won best Foreign Film at the 1999 Oscars?', 'Crouching Tiger, Hidden Dragon', 'No Man''s Land', 'Life is Beautiful', 'All About My Mother');
 INSERT INTO quizzes (title_id, question, choice_a, choice_b, choice_c, answer) VALUES (4, 'Who directed the French film Crimson River?', 'Luc Besson', 'Jean-Luc Godard', 'Jean-Jacques Annaud', 'Mathieu Kassovitz');
 INSERT INTO quizzes (title_id, question, choice_a, choice_b, choice_c, answer) VALUES (4, 'Which director helmed the German film Das Boot?', 'Oliver Hirschbiegel', 'Florian Henckel von Donnersmarck', 'Werner Herzog', 'Wolfgang Petersen');

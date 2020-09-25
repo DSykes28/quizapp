@@ -6,77 +6,75 @@
  */
 
 const express = require('express');
-const router  = express.Router();
-const cookieSession = require('cookie-session');
-const bodyParser = require('body-parser');
 const app = express();
+const router = express.Router();
+
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
 const { Pool } = require('pg');
 const dbParams = require('../lib/db.js');
+const { user } = require('pg/lib/defaults');
 const db = new Pool(dbParams);
 db.connect();
 
-app.use(cookieSession({
-  name: 'session',
-  keys: ['key1', 'key2']
-}));
-app.use(bodyParser.urlencoded({ extended: false }));
-
 module.exports = (db) => {
   router.get("/login", (req, res) => {
-    if (req.session !== true) {
-     res.render("login");
+    if (!req.session.user_id) {
+      let templateVars = {
+        user: null
+      }
+     res.render("login", templateVars);
     } else {
       res.redirect("/");
     }
   });
 
   router.post("/login", (req, res) => {
+    console.log("HELLO WORLD");
     const { email, password } = req.body;
-    if (email && password) {
-      console.log("hello!");
-      db.query('SELECT * FROM users WHERE email = ? AND password = ?', [email, password])
-      .then(response => {
-        console.log(response);
-        req.session.user_id = email;
-        res.render("index", response)
+
+    db.query(`SELECT * FROM users WHERE email = $1`, [email])
+      .then(data => {
+        console.log("data.rows[0]", data.rows[0]);
+        if (password === data.rows[0].password) {
+        req.session.user_id = data.rows[0].id;
+        console.log("req.session", req.session);
+        res.redirect("/");
+        } else {
+          res.send({error: "error"});
+          return;
+        }
       })
       .catch(err => {
-        res.send(err);
-     })
-    }
+        res
+        .status(500)
+        .json({error: err.message});
+     });
   });
 
   router.get("/register", (req, res) => {
-    if (req.session !== true) {
-      res.render("register");
-    }
+      let templateVars = {
+        user: null
+      }
+      res.render("register", templateVars);
   });
 
   router.post("/register", (req, res) => {
-//check db for user, if exists return error
-    const email = req.body.email;
-    const password = req.body.password;
-    if (email === '' || password === '') {
-      // res.send(error);
-
-    } else {
-      // db.query(`INSERT into users;`)
-      // .then(data => {
-      //   const users = data.rows;
-      //   res.json({ users });
-      // })
-      // .catch(err => {
-      //   res
-      //     .status(500)
-      //     .json({ error: err.message });
-      // })
-      //register user in database. how?
-    }
-    // req.session.user_id = email;
-    res.redirect("/quizzes_view");
+    const { name, email, password} = req.body;
+    db.query(`INSERT INTO users (name, email, password)
+      VALUES ($1, $2, $3)
+      RETURNING id;
+      `, [name, email, password])
+      .then(data => {
+        req.session.user_id = data.rows[0].id;
+        res.redirect("/");
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      })
   });
 
   router.post("/logout", (req, res) => {
