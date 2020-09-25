@@ -6,9 +6,16 @@ const PORT       = process.env.PORT || 8080;
 const ENV        = process.env.ENV || "development";
 const express    = require("express");
 const bodyParser = require("body-parser");
+const cookieSession = require('cookie-session');
 const sass       = require("node-sass-middleware");
 const app        = express();
 const morgan     = require('morgan');
+
+app.use(cookieSession({
+  name: 'session',
+  keys: ['key1', 'key2']
+}));
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // PG database client/connection setup
 const { Pool } = require('pg');
@@ -31,6 +38,11 @@ app.use("/styles", sass({
 }));
 app.use(express.static("public"));
 
+// create current user middleware
+
+
+
+
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
 const usersRoutes = require("./routes/users");
@@ -50,27 +62,28 @@ app.use("/quizzes", quizzesRoutes(db));
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 app.get("/", (req, res) => {
-  res.render("index");
+  if (!req.session.user_id) {
+    let templateVars = {
+      user: null
+    }
+    res.render("index", templateVars);
+  } else {
+    console.log("user_ID", req.session.user_id);
+    db.query(`SELECT *
+    FROM users
+    WHERE id = ${req.session.user_id};`)
+      .then(response => {
+        let templateVars = {
+          user: response.rows[0] };
+        console.log("user", templateVars.user);
+        res.render("index", templateVars);
+      })
+    .catch(err => {
+      res.status(500).json({ error: err.message });
+    })
+  }
 });
 
-// test register route Affaf
-app.get("/new_quizz", (req, res) => {
-  res.render("new_quizz");
-});
-// test user route Affaf
-app.get("/user", (req, res) => {
-  res.render("user");
-});
-
-// test result route Affaf
-app.get("/result", (req, res) => {
-  res.render("result");
-});
-
-// test quizz route Affaf
-app.get("/quizz", (req, res) => {
-  res.render("quizz");
-});
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
