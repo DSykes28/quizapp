@@ -57,10 +57,6 @@ app.get("/", (req, res) => {
 app.get("/new_quizz", (req, res) => {
   res.render("new_quizz");
 });
-// test user route Affaf
-app.get("/user", (req, res) => {
-  res.render("user");
-});
 
 // test result route Affaf
 app.get("/result", (req, res) => {

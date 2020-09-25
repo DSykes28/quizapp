@@ -8,8 +8,14 @@
 const express = require('express');
 const app = express();
 const router  = express.Router();
-const cookieSession = require('cookie-session');
-const getQuizzes = require('../helpers/get9Quizzes');
+const cookieSession = require('cookie-session')
+const bodyParser = require("body-parser");
+
+app.use(cookieSession({
+  name: 'session',
+  keys: ['key1', 'key2']
+}));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
@@ -25,25 +31,44 @@ module.exports = (db) => {
       });
   });
 
+ //page for user to view all of the quizzes they created
   router.get("/user", (req, res) => {
-    //db query which user it is, then display quizzes created in a template var?
-    res.render("user", templateVars);
+    if (req.session !== true) {
+      res.render("login");
+    } else {
+    db.query(`SELECT name from users
+      WHERE email = ${req.body.email}`)
+      .then(response => {
+        console.log(response);
+        res.render("user", { response });
+      })
+      .catch(err => {
+        res.status(500).json({ error: err.message });
+      });
+    }
   });
 
   router.get("/user/:quizID", (req, res) => {
-//db query - look in user to find which quiz result ^ route neets to change
-    res.render("result", templateVars);
+    if (req.session !== true) {
+      res.render("login");
+    } else {
+      console.log(req);
+    db.query(`SELECT name, title, score, total_score
+    FROM results
+    JOIN users ON users.id = user_id
+    JOIN quiz_names ON quiz_names.id = results.quiz_id
+    WHERE quiz_id = ${req.body}`)
+      .then(response => {
+        console.log(response)
+        res.render("result", templateVars);
+      })
+      .catch(err => {
+        res.status(500).json({ error: err.message });
+      });
+    }
   });
-
   return router;
-};
-
-
-//form for user to make quiz
-
-//quiz url - can be unlisted or public
-;
-//page for user to view all of the quizzes they created
-//upon completion of quiz, shareable link to result of attempt
+}
+//quiz url - can be unlisted or public;
 //show all quizzes - public - you don’t need to login to view or take quiz, only to make 1
 
