@@ -84,6 +84,24 @@ app.get("/", (req, res) => {
   }
 });
 
+app.get("/result", (req, res) => {
+  let templateVars = {user: {name: "Alice"}};
+
+
+  res.render("result", templateVars);});
+
+  app.get("/new_quizz", (req, res) => {
+    let templateVars = {user: {name: "Alice"}};
+
+
+    res.render("new_quizz", templateVars);});
+
+    app.get("/user", (req, res) => {
+      let templateVars = {user: {name: "Alice"}};
+
+
+      res.render("user", templateVars);});
+
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);

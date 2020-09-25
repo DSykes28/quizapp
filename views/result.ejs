@@ -25,17 +25,19 @@
     <main >
       <div class="column" >
         <div class="info">
-          <h2>Name</h2>
-          <p>Quizz Title</p>
+          <h2>Alice</h2>
+          <h6><a href=/quizzes/6>Star trek trivia</a></h6>
           <i class="fas fa-share-alt"></i>
         </div>
         <div>
-          <h2>Result</h2>
+          <h2>3/6</h2>
         </div>
         <div id="checkbox">
-          <button>
-            share
-          </button>
+          <form class="quizz-form" action="/result" method="GET">
+            <button type=“submit” class=“submit-button”>share!</button><a href=/result>
+              http://localhost:8080/result
+              </a></button>
+          </form>
       </div>
 
     </main>
