@@ -43,7 +43,7 @@ const quizzesRoutes = require("./routes/quizzes");
 app.use("/api/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
 app.use("/", authRoutes(db));
-app.use("/api/quizzes", quizzesRoutes(db));
+app.use("/quizzes", quizzesRoutes(db));
 // Note: mount other resources here, using the same pattern above
 
 // Home page
@@ -52,14 +52,7 @@ app.use("/api/quizzes", quizzesRoutes(db));
 app.get("/", (req, res) => {
   res.render("index");
 });
-// test login route Affaf
-app.get("/login", (req, res) => {
-  res.render("login");
-});
-// test register route Affaf
-app.get("/register", (req, res) => {
-  res.render("register");
-});
+
 // test register route Affaf
 app.get("/new_quizz", (req, res) => {
   res.render("new_quizz");

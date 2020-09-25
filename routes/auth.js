@@ -7,44 +7,52 @@
 
 const express = require('express');
 const router  = express.Router();
+const cookieSession = require('cookie-session');
+const bodyParser = require('body-parser');
+const app = express();
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
+
+const { Pool } = require('pg');
+const dbParams = require('../lib/db.js');
+const db = new Pool(dbParams);
+db.connect();
+
+app.use(cookieSession({
+  name: 'session',
+  keys: ['key1', 'key2']
+}));
+app.use(bodyParser.urlencoded({ extended: false }));
 
 module.exports = (db) => {
   router.get("/login", (req, res) => {
     if (req.session !== true) {
-      res.render("login");
+     res.render("login");
     } else {
-      db.query(`SELECT * FROM users;`)
-      .then(data => {
-        //  const users = data.rows;
-        //  res.json({ users });
-      })
-       .catch(err => {
-         res.status(500).json({ error: err.message });
-       });
-      let user = req.session.user_id;
-      let templateVars = {
-        user: users[user],
-      };
-      res.render("quizzes_view");
+      res.redirect("/");
     }
   });
 
   router.post("/login", (req, res) => {
-    res.render("user_homepage");
+    const { email, password } = req.body;
+    if (email && password) {
+      console.log("hello!");
+      db.query('SELECT * FROM users WHERE email = ? AND password = ?', [email, password])
+      .then(response => {
+        console.log(response);
+        req.session.user_id = email;
+        res.render("index", response)
+      })
+      .catch(err => {
+        res.send(err);
+     })
+    }
   });
 
   router.get("/register", (req, res) => {
-    // db.query(`SELECT * FROM users;`)
-    // .then(data => {
-    //   const users = data.rows;
-    //   res.json({ users });
-    // })
-    // .catch(err => {
-    //   res
-    //     .status(500)
-    //     .json({ error: err.message });
-    // });
-    res.render("register")
+    if (req.session !== true) {
+      res.render("register");
+    }
   });
 
   router.post("/register", (req, res) => {
