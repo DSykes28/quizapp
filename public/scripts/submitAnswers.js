@@ -14,6 +14,16 @@ $( document ).ready(function() {
   })
   console.log(tally);
   console.log($("fieldset").length);
+$.ajax( {
+  url:"/result/"+  ,
+  type:"POST",
+  data:{
+    quiz:quiz_id,
+    user: user_id'
+    score: score
+  }
+})
+
   //google window location href redirect
   })
 });

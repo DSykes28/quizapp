@@ -3,7 +3,7 @@ $(() => {
   console.log("hello?");
   function showQuiz(quiz) {
     return `
-    <div class=“grid-item”><h6><a href=/quizzes/${quiz.id}>${quiz.title}</a></h6></div>
+    <div class ="grid-item"><h6><a href=/quizzes/${quiz.id}>${quiz.title}</a></h6></div>
     `
   };
 
