@@ -30,7 +30,7 @@
           <% for (question of data) { %>
             <h2><%= question.question %></h2>
             <% let arr = [question.a, question.b, question.c, question.d].sort(()=> Math.random()-0.5) %>
-            <fieldset id="group<%= question.q_id %>" data-answer="<%= question.d %>">
+            <fieldset id="groupc" data-answer="<%= question.d %>">
               <label for="var_string"><input type="radio" name="group<%= question.q_id %>" /><%= arr[0] %></label>
               <label for="var_join"><input type="radio" name="group<%= question.q_id %>"  /><%= arr[1] %></label>
               <label for="var_info"><input type="radio" name="group<%= question.q_id %>"/><%= arr[2] %></label>
