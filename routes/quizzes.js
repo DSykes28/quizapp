@@ -59,27 +59,15 @@ module.exports = (db) => {
   });
 
   router.get("/:quizID", (req, res) => {
-<<<<<<< HEAD
-    //console.log(req.session);
-      db.query(`SELECT quizzes.id AS q_id, quiz_names.id, question, choice_a AS A, choice_b AS B, choice_c as C, answer AS D, total_score
-=======
     db.query(`SELECT quizzes.id AS q_id, quiz_names.id, question, choice_a AS A, choice_b AS B, choice_c as C, answer AS D, total_score
->>>>>>> game-branch-2
       FROM quiz_names
       JOIN quizzes ON title_id = quiz_names.id
       WHERE quiz_names.id = ${req.params.quizID}`)
         .then(response => {
-<<<<<<< HEAD
-            console.log(response);
-          if (false) {
-            res.redirect("/login");
-            return;
-=======
           console.log(response);
           let templateVars = {
             user: {name: "Alice"},
             data: response.rows
->>>>>>> game-branch-2
           }
           res.render("quizz", templateVars);
         })
