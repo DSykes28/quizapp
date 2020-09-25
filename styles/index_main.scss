@@ -1,4 +1,4 @@
-.grid-container {
+#title-container {
   margin-top: 2rem;
   margin-bottom: 2rem;
   display: grid;
@@ -10,20 +10,25 @@
   justify-content: space-evenly;
   text-align: center;
 
+  .grid-item {
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #0f7a8a;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 50px;
+    background-image: url(/images/quizz.jpg);
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    a {
+      color: white;
+      text-decoration: none;
+    }
+  }
 }
-.grid-item {
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #0f7a8a;
-  border: 1px solid rgba(0, 0, 0, 0.8);
-  padding: 20px;
-  font-size: 50px;
-  background-image: url(/images/quizz.jpg);
-  background-position: center;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  background-size: cover;
-  -o-background-size: cover;
-}
+

@@ -1,14 +1,12 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Quizz</title>
-
     <link href="https://fonts.googleapis.com/css2?family=Carter+One&family=Josefin+Sans:ital,wght@0,300;0,700;1,300;1,700&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
@@ -16,11 +14,10 @@
     <link rel="stylesheet" href="/styles/new-quizz.css" type="text/css" />
     <link rel="stylesheet" href="/styles/footer.css" type="text/css" />
     <link rel="stylesheet" href="/styles/quizz.css" type="text/css" />
-
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
+    <script type="text/javascript" src="/scripts/submitAnswers.js"></script>
   </head>
-
   <body>
     <!-- adding navbar from _nav.ejs -->
     <%- include('partials/_nav') %>
@@ -30,21 +27,27 @@
       <h3>Good Luck!!</h3>
       <div>
         <form class="quizz-form">
-          <h2>Question</h2>
-          <div>
-            <label for="var_string"><input type="radio" name="variable" value="0" id="var_string" />Answer </label>
-            <label for="var_join"><input type="radio" name="variable" value="0" id="var_join" />answer</label>
-            <label for="var_info"><input type="radio" name="variable" value="25" id="var_info" />answer</label>
-            <label for="var_condition"><input type="radio" name="variable" value="0" id="var_condition"/>answer</label>
-          </div>
+          <% for (question of data) { %>
+            <h2><%= question.question %></h2>
+            <% let arr = [question.a, question.b, question.c, question.d].sort(()=> Math.random()-0.5) %>
+            <fieldset id="group<%= question.q_id %>" data-answer="<%= question.d %>">
+              <label for="var_string"><input type="radio" name="group<%= question.q_id %>" /><%= arr[0] %></label>
+              <label for="var_join"><input type="radio" name="group<%= question.q_id %>"  /><%= arr[1] %></label>
+              <label for="var_info"><input type="radio" name="group<%= question.q_id %>"/><%= arr[2] %></label>
+              <label for="var_condition"><input type="radio" name="group<%= question.q_id %>" /><%= arr[3] %></label>
+            </fieldset>
+         <% } %>
+         <button type="submit" onclick="myFunction()" class="submit-button">Submit!</button>
+          <script>
+          function myFunction() {
+            window.location.href("/quiz/:quizID");
+          }
+          </script>
+         <p>Your grade is: <span id="grade">__</span></p>
+         <button type="submit" class="share-button">Share your result!</button>
+         <p id="grade2"></p>
         </form>
-        <button type="submit" class="submit-button">Submit!</button>
-        <p>Your grade is: <span id="grade">__</span></p>
-        <p id="grade2"></p>
       </div>
-
     </main>
   </body>
-  <%- include('partials/_footer') %>
-
 </html>
