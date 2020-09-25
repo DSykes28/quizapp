@@ -3,6 +3,7 @@ const router  = express.Router();
 const { get9Quizzes } = require('../helpers/get9Quizzes');
 const cookieSession = require('cookie-session');
 const bodyParser = require("body-parser");
+const app = express();
 
 app.use(cookieSession({
   name: 'session',
@@ -29,21 +30,27 @@ module.exports = (db) => {
   })
 
   router.get("/quiz/new", (req, res) => {
-    if (req.session !== true) {
+    if (!req.session.user_id) {
       res.redirect("/login");
     } else {
-      res.render("new_quizz");
+      let templateVars = {
+        user: response.rows[0]
+      }
+      res.render("new_quizz", templateVars);
     }
   });
 
   router.post("quiz/new",(req, res) => {
-    if (req.session !== true) {
+    if (!req.session.user_id) {
       res.send("Please log in to view.").redirect("/login");
     } else {
     db.query(`INSERT INTO quizzes (title_id, question, choice_a, choice_b, choice_c, answer) VALUES (1, '?', '', '', '', '');`)
     db.query(`INSERT INTO quiz_names (total_score) VALUES (COUNT(quizzes.question);`)
       .then(response => {
-        res.render("user", { response })
+        let templateVars = {
+          user: response.rows[0]
+        }
+        res.render("user", templateVars)
       })
       .catch(err => {
         res.status(500).json({ error: err.message });
@@ -52,18 +59,17 @@ module.exports = (db) => {
   });
 
   router.get("/:quizID", (req, res) => {
-    console.log(req.session);
-      db.query(`SELECT quizzes.id AS q_id, quiz_names.id, question, choice_a AS A, choice_b AS B, choice_c as C, answer AS D, total_score
+    db.query(`SELECT quizzes.id AS q_id, quiz_names.id, question, choice_a AS A, choice_b AS B, choice_c as C, answer AS D, total_score
       FROM quiz_names
       JOIN quizzes ON title_id = user_id
       WHERE quiz_names.id = ${req.params.quizID}`)
         .then(response => {
           console.log(response);
-          if (false) {
-            res.redirect("/login");
-            return;
+          let templateVars = {
+            user: {name: "Alice"},
+            data: response.rows
           }
-          res.render("quizz", {data: response.rows});
+          res.render("quizz", templateVars);
         })
         .catch(err => {
           res.status(500).json({ error: err.message });
@@ -80,7 +86,10 @@ module.exports = (db) => {
     WHERE results.id = ${results.id}`)
     .then(response => {
       // console.log(response);
-      res.render("result", { response });
+      let templateVars = {
+        user: response.rows[0]
+      }
+      res.render("result", templateVars);
     })
     .catch(err => {
       res.status(500).json({ error: err.message });

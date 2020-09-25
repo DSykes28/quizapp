@@ -36,11 +36,15 @@ module.exports = (db) => {
     if (req.session !== true) {
       res.render("login");
     } else {
-    db.query(`SELECT name from users
-      WHERE email = ${req.body.email}`)
+    db.query(`SELECT users.name AS name, title AS quizzes
+    FROM users
+    JOIN quiz_names ON user_id = users.id
+    WHERE users.id = ${req.params.userID};`)
       .then(response => {
-        console.log(response);
-        res.render("user", { response });
+        let templateVars = {
+          user: response.rows[0]
+        }
+        res.render("user", templateVars);
       })
       .catch(err => {
         res.status(500).json({ error: err.message });
@@ -49,18 +53,22 @@ module.exports = (db) => {
   });
 
   router.get("/user/:quizID", (req, res) => {
-    if (req.session !== true) {
-      res.render("login");
+    if (!req.session.userID) {
+      let templateVars = {
+        user: null
+      }
+      res.render("login", templateVars);
     } else {
-      console.log(req);
-    db.query(`SELECT name, title, score, total_score
-    FROM results
-    JOIN users ON users.id = user_id
-    JOIN quiz_names ON quiz_names.id = results.quiz_id
-    WHERE quiz_id = ${req.body}`)
-      .then(response => {
-        console.log(response)
-        res.render("result", templateVars);
+      db.query(`SELECT name, title, score, total_score
+      FROM results
+      JOIN users ON users.id = user_id
+      JOIN quiz_names ON quiz_names.id = results.quiz_id
+      WHERE quiz_id = ${req.body}`)
+        .then(response => {
+          let templateVars = {
+            user: response.rows[0]
+          }
+          res.render("result", templateVars);
       })
       .catch(err => {
         res.status(500).json({ error: err.message });
